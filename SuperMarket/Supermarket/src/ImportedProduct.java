@@ -10,8 +10,7 @@ public class ImportedProduct extends Product {
 
     @Override
     public String Information() {
-        return super.Information()+"\n"+"Preço:"+calculateFinalPrice()+importedTax;
+        return super.Information() + "\n" + "Preço:" + calculateFinalPrice() + importedTax;
     }
-
 
 }
