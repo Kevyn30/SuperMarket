@@ -2,23 +2,28 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] arg) {
-        System.out.println("Para adicionar um prduto importado(1)" + "\n" + "Para adicionar um produto digital(2)" + "\n");
+        System.out.println("Para adicionar um prduto importado(1)" +
+                "\n" + "Para adicionar um produto digital(2)" + "\n"+"Para sair digite(0)");
         menu();
     }
 
     public static String menu() {
-        int UserDig;
+        int UserDig, val;
         Scanner userDig = new Scanner(System.in);
         UserDig = userDig.nextInt();
-        if (UserDig == 1) {
+        for (val = 0; UserDig != val; val = 0) {
+            if (UserDig == 1) {
 
-            return importedOption();
+                return importedOption();
 
+            }
+            if (UserDig == 2) {
+                return digitalOption();
+            }
+            return menu();
         }
-        if (UserDig == 2) {
-            return digitalOption();
-        }
-        return menu();
+
+        return "Fim do Programa!";
     }
 
     public static String importedOption() {

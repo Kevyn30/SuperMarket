@@ -2,9 +2,9 @@ package Main;
 
 public class Product {
 
-    String name;
-    double price;
-    int stockQuantity;
+    private String name;
+    private double price;
+    private int stockQuantity;
 
     public Product(String name, double price, int stockQuantity) {
         this.name = name;
