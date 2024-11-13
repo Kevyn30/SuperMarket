@@ -10,6 +10,6 @@ public class DigitalProduct extends Product {
 
     @Override
     public String Information() {
-        return super.Information() + "\n" + "Preço: " + calculateFinalPrice() * 0.9;
+        return super.Information() + "\n" + "Preço: " + (calculateFinalPrice() * 0.9);
     }
 }

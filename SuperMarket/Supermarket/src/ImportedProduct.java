@@ -6,11 +6,12 @@ public class ImportedProduct extends Product {
     public ImportedProduct(String name, double price, int stockQuantity, double importedTax) {
         super(name, price, stockQuantity);
         this.importedTax = importedTax;
+
     }
 
     @Override
     public String Information() {
-        return super.Information() + "\n" + "Preço:" + calculateFinalPrice() + importedTax;
+        return super.Information() + "\n" + "Preço:" + (calculateFinalPrice() + importedTax);
     }
 
 }

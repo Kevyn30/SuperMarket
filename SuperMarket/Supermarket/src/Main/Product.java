@@ -37,7 +37,7 @@ public class Product {
     }
 
     public String Information() {
-        return "\n" + "Produtos" + "\n" + ", Nome: " + name + ", Preço: " + price + ", Quantidade: " + stockQuantity + "\n";
+        return "\n" + "Produtos" + "\n" + "Nome: " + name + ", Preço: " + price + ", Quantidade: " + stockQuantity + "\n";
     }
 
 }
