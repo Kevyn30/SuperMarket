@@ -41,6 +41,5 @@ public class Store {
 
     private void showStoreImp(ImportedProduct importedProduct) {
         System.out.println(importedProduct.Information());
-        System.out.println("");//só pra quebrar linha entre os alunos.;
     }
 }
