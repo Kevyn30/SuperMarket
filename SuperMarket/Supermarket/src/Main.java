@@ -1,30 +1,41 @@
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] arg) {
         System.out.println("Para adicionar um prduto importado(1)" +
-                "\n" + "Para adicionar um produto digital(2)" + "\n"+"Para sair digite(0)");
+                "\n" + "Para adicionar um produto digital(2)" + "\n" + "Para sair digite(0)");
         menu();
     }
 
     public static String menu() {
-        int UserDig, val;
+        int UserDig;
         Scanner userDig = new Scanner(System.in);
+        int param = 0;
         UserDig = userDig.nextInt();
-        for (val = 0; UserDig != val; val = 0) {
+        while (UserDig > param) {
             if (UserDig == 1) {
 
-                return importedOption();
+                importedOption();
 
             }
             if (UserDig == 2) {
-                return digitalOption();
+                digitalOption();
             }
+            if (UserDig == 3) {
+
+
+            }
+            System.out.println("\n" + "Para adicionar um prduto importado(1) " +
+                    "\n" + "Para adicionar um produto digital(2)" + "\n" + "Para sair digite(0)");
+
             return menu();
         }
 
         return "Fim do Programa!";
     }
+
+
 
     public static String importedOption() {
         String nameInput;
@@ -48,6 +59,7 @@ public class Main {
         ImportedProduct importedProduct = new ImportedProduct(nameInput, priceInput, quantity, importedtaxInput);
 
         System.out.println(importedProduct.Information());
+
         return "1";
     }
 

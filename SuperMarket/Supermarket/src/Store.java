@@ -29,6 +29,7 @@ public class Store {
         while (count<digitalProducts.size()){
             showStoreDig(digitalProducts.get(count));
         }
+
     }
 
     private void showStoreDig(DigitalProduct DigitalProduct) {
