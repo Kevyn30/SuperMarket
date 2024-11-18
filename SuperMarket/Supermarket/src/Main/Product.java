@@ -1,24 +1,37 @@
 package Main;
 
-public class Product {
+import jdk.jfr.Category;
 
+public class Product {
     private String name;
     private double price;
     private int stockQuantity;
+    private Category category;
 
-    public Product(String name, double price, int stockQuantity) {
+    public Product(String name, double price, int stockQuantity, Category category) {
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
+        this.category = category;
     }
-
 
     public double calculateFinalPrice() {
         return price;
     }
 
-    public String Information() {
-        return "\n" + "Produtos" + "\n" + "Nome: " + name + ", Preço: " + price + ", Quantidade: " + stockQuantity + "\n";
+    public String getName() {
+        return name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    @Override
+    public String toString() {
+        return "Produtos:" + "Nome:'" + name + ", Preço: " + calculateFinalPrice() +", \n"+
+                "Quantidade em Estoque:" + stockQuantity + ", Categoria: " + category.getClass();
     }
 
 }
+

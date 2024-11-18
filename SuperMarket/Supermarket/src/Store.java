@@ -1,43 +1,37 @@
+import Main.Product;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Store {
-    ImportedProduct importedProduct;
-    DigitalProduct digitalProduct;
-    List<ImportedProduct> importedProducts = new ArrayList<ImportedProduct>();
-    List<DigitalProduct> digitalProducts = new ArrayList<DigitalProduct>();
-    public Store(ImportedProduct importedProduct, DigitalProduct digitalProduct) {
-        this.importedProduct = importedProduct;
-        this.digitalProduct = digitalProduct;
+    private List<Product> products;
+
+    public Store() {
+        this.products = new ArrayList<>();
     }
 
-    public void addImportedProduct(ImportedProduct importedProduct) {
-        this.importedProducts.add(importedProduct);
+    public void addProduct(Product product) {
+        products.add(product);
     }
 
-    public void addDigitalProduct(DigitalProduct digitalProduct) {
-        this.digitalProducts.add(digitalProduct);
-    }
-
-    public void showClass() {
-
-        int count = 0;
-        while (count < importedProducts.size()) {
-            showStoreImp(importedProducts.get(count));
-            count++;
+    public void listProducts() {
+        for (Product product : products) {
+            System.out.println(product);
         }
-        while (count<digitalProducts.size()){
-            showStoreDig(digitalProducts.get(count));
+    }
+
+    public void searchByCategory(String categoryName) {
+        for (Product product : products) {
+            if (product.getCategory().getClass().getName().equalsIgnoreCase(categoryName)) {
+                System.out.println(product);
+            }
         }
-
     }
 
-    private void showStoreDig(DigitalProduct DigitalProduct) {
-        System.out.println(digitalProduct.Information());
-    }
-
-
-    private void showStoreImp(ImportedProduct importedProduct) {
-        System.out.println(importedProduct.Information());
+    public void searchByName(String productName) {
+        for (Product product : products) {
+            if (product.getName().equalsIgnoreCase(productName)) {
+                System.out.println(product);
+            }
+        }
     }
 }

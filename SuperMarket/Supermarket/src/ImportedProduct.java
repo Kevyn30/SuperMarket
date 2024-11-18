@@ -1,17 +1,18 @@
 import Main.Product;
+import jdk.jfr.Category;
 
 public class ImportedProduct extends Product {
     public double importedTax;
 
-    public ImportedProduct(String name, double price, int stockQuantity, double importedTax) {
-        super(name, price, stockQuantity);
+    public ImportedProduct(String name, double price, int stockQuantity, double importedTax, Category category) {
+        super(name, price, stockQuantity,category);
         this.importedTax = importedTax;
 
     }
 
     @Override
-    public String Information() {
-        return super.Information() + "\n" + "Preço:" + (calculateFinalPrice() + importedTax);
+    public double calculateFinalPrice() {
+        return super.calculateFinalPrice() + importedTax;
     }
 
 }
