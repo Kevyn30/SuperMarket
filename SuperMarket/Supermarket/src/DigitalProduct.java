@@ -1,6 +1,5 @@
 import Main.Product;
 import Main.Category;
-
 public class DigitalProduct extends Product {
     private String downloadUrl;
 

@@ -1,5 +1,5 @@
-import Main.Category;
 import Main.Product;
+import Main.Category;
 public class ImportedProduct extends Product {
     public double importedTax;
 
