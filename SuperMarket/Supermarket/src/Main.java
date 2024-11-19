@@ -1,7 +1,3 @@
-import Main.Product;
-import jdk.jfr.Category;
-
-import java.lang.annotation.Annotation;
 import java.util.Scanner;
 
 public class Main {
@@ -10,81 +6,74 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("\nMenu:");
-            System.out.println("1. Adicionar Produto");
-            System.out.println("2. Listar Produtos");
-            System.out.println("3. Buscar por Categoria");
-            System.out.println("4. Buscar por Nome");
-            System.out.println("5. Sair");
-            System.out.print("Escolha uma opção: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            System.out.println("Menu:");
+            System.out.println("1. Adicionar novo produto");
+            System.out.println("2. Listar todos os produtos");
+            System.out.println("3. Filtrar produtos (Nome/Categoria)");
+            System.out.println("4. Sair");
 
-            switch (choice) {
+            int option = scanner.nextInt();
+            scanner.nextLine(); // Consume newline left-over
+
+            switch (option) {
                 case 1:
-                    System.out.print("Nome do produto: ");
+                    System.out.println("Tipo de produto:");
+                    System.out.println("1. Comum");
+                    System.out.println("2. Importado");
+                    System.out.println("3. Digital");
+
+                    int type = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline left-over
+
+                    System.out.println("Nome:");
                     String name = scanner.nextLine();
-                    System.out.print("Preço do produto: ");
+                    System.out.println("Preço:");
                     double price = scanner.nextDouble();
-                    System.out.print("Quantidade em estoque: ");
+                    scanner.nextLine(); // Consume newline left-over
+                    System.out.println("Quantidade em estoque:");
                     int stockQuantity = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.print("Categoria do produto: ");
+                    System.out.println("Categoria:");
                     String categoryName = scanner.nextLine();
-                    System.out.print("Descrição da categoria: ");
-                    String categoryDescription = scanner.nextLine();
-                    Category category = new Category(){
-                        @Override
-                        public Class<? extends Annotation> annotationType() {
-                            return null;
-                        }
+                    System.out.println("Descrição");
+                    String descriptionProduct = scanner.nextLine();
+                    Category category = new Category(categoryName, descriptionProduct);
 
-                        @Override
-                        public String[] value() {
-                            return new String[0];
-                        }
-                    };
-
-                    System.out.print("Tipo do produto (1: Comum, 2: Importado, 3: Digital): ");
-                    int type = scanner.nextInt();
-                    scanner.nextLine();
-
-                    if (type == 1) {
-                        store.addProduct(new Product(name, price, stockQuantity, category));
-                    } else if (type == 2) {
-                        System.out.print("Taxa de importação: ");
-                        double importTax = scanner.nextDouble();
-                        store.addProduct(new ImportedProduct(name, price, stockQuantity, importTax, category));
-                    } else if (type == 3) {
-                        System.out.print("URL de download: ");
-                        String downloadUrl = scanner.nextLine();
-                        store.addProduct(new DigitalProduct(name, price, stockQuantity, category, downloadUrl));
+                    Product product;
+                    switch (type) {
+                        case 1:
+                            product = new Product(name, price, stockQuantity, category);
+                            break;
+                        case 2:
+                            System.out.println("Taxa de importação:");
+                            double importTax = scanner.nextDouble();
+                            scanner.nextLine();
+                            product = new ImportedProduct(name, price, stockQuantity, importTax, category);
+                            break;
+                        case 3:
+                            System.out.println("URL de download:");
+                            String downloadUrl = scanner.nextLine();
+                            product = new DigitalProduct(name, price, stockQuantity, category, downloadUrl);
+                            break;
+                        default:
+                            continue;
                     }
-                    break;
 
+                    store.addProduct(product);
+                    break;
                 case 2:
                     store.listProducts();
                     break;
-
                 case 3:
-                    System.out.print("Digite o nome da categoria: ");
-                    String searchCategory = scanner.nextLine();
-                    store.searchByCategory(searchCategory);
-                    break;
+                    System.out.println("Nome ou Categoria do Produto: ");
+                    String query = scanner.nextLine();
+                    store.filterProducts(query);
 
+                    break;
                 case 4:
-                    System.out.print("Digite o nome do produto: ");
-                    String searchName = scanner.nextLine();
-                    store.searchByName(searchName);
-                    break;
-
-                case 5:
                     System.out.println("Saindo...");
-                    scanner.close();
-                    return;
-
-                default:
-                    System.out.println("Opção inválida!");
+                    System.exit(0);
+                    break;
             }
         }
     }

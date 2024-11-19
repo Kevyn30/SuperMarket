@@ -1,8 +1,7 @@
-import Main.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Store {
+class Store {
     private List<Product> products;
 
     public Store() {
@@ -15,22 +14,16 @@ public class Store {
 
     public void listProducts() {
         for (Product product : products) {
-            System.out.println(product);
+            System.out.println(product.getName() + ", Preço Final: " + product.calculateFinalPrice()+
+                    "\n"+"Categoria: " +product.getCategory().getName());
         }
     }
 
-    public void searchByCategory(String categoryName) {
+    public void filterProducts(String query) {
         for (Product product : products) {
-            if (product.getCategory().getClass().getName().equalsIgnoreCase(categoryName)) {
-                System.out.println(product);
-            }
-        }
-    }
-
-    public void searchByName(String productName) {
-        for (Product product : products) {
-            if (product.getName().equalsIgnoreCase(productName)) {
-                System.out.println(product);
+            if (product.getName().contains(query) || product.getCategory().getName().contains(query)) {
+                System.out.println(product.getName() + ", Preço Final: " + product.calculateFinalPrice()
+                +"\n"+"Categoria:"+product.getCategory().getName()+"\n"+"Descrição:"+product.getCategory().getDescription()+".");
             }
         }
     }
