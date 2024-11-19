@@ -1,4 +1,5 @@
-
+import Main.Category;
+import Main.Product;
 public class ImportedProduct extends Product {
     public double importedTax;
 
@@ -6,6 +7,7 @@ public class ImportedProduct extends Product {
         super(name, price, stockQuantity, category);
         this.importedTax = importedTax;
     }
+
 
     @Override
     public double calculateFinalPrice() {

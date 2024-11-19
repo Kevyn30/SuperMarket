@@ -1,3 +1,5 @@
+import Main.Product;
+import Main.Category;
 import java.util.Scanner;
 
 public class Main {

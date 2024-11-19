@@ -1,3 +1,5 @@
+import Main.Product;
+import Main.Category;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,7 @@ class Store {
         for (Product product : products) {
             if (product.getName().contains(query) || product.getCategory().getName().contains(query)) {
                 System.out.println(product.getName() + ", Preço Final: " + product.calculateFinalPrice()+", Quantidade:"+product.getStockQuantity()
-                +"\n"+"Categoria:"+product.getCategory().getName()+"\n"+"Descrição:"+product.getCategory().getDescription()+".");
+                +"\n"+"Categoria:"+product.getCategory().getName()+"\n"+"Descrição:"+product.getCategory().getDescription());
             }
         }
     }

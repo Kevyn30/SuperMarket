@@ -1,7 +1,5 @@
 package Main;
 
-import jdk.jfr.Category;
-
 public class Product {
     private String name;
     private double price;
@@ -26,12 +24,13 @@ public class Product {
     public Category getCategory() {
         return category;
     }
+    public int getStockQuantity() {
+        return stockQuantity;
+    }
 
     @Override
     public String toString() {
-        return "Produtos:" + "Nome:'" + name + ", Preço: " + calculateFinalPrice() +", \n"+
-                "Quantidade em Estoque:" + stockQuantity + ", Categoria: " + category.getClass();
+        return "Produtos:"+"\n" + "Nome:'" + name + ", Preço: " + calculateFinalPrice() + ", \n" +
+                "Quantidade em Estoque:" + stockQuantity + ", Categoria: " + category.getName();
     }
-
 }
-
