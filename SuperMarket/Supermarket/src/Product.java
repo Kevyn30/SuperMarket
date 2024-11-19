@@ -22,6 +22,9 @@ public class Product {
     public Category getCategory() {
         return category;
     }
+    public int getStockQuantity() {
+        return stockQuantity;
+    }
 
     @Override
     public String toString() {
